@@ -38,3 +38,5 @@ def convert(pic):
 
 for x in input_path.iterdir():
     convert(x)
+
+print('Conversion Done!')
