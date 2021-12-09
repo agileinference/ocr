@@ -40,14 +40,16 @@ n=0
 i=0
 
 #count number of items in input directory
-for files in input_path.iterdir():
-    n=n+1
-    
-if n>0:
-    for x in input_path.iterdir():
-        convert(x)
-        i = i+1
-        print('Converting',x.stem, '(',i, 'out of',n,')')
-    print('Conversion Done!')
+if input_path.exists()==True:
+    for files in input_path.iterdir():
+        n=n+1
+    if n!=0:
+        for x in input_path.iterdir():
+            convert(x)
+            i = i+1
+            print('Converting',x.stem, '(',i, 'out of',n,')')
+        print('Conversion Done!')
+    else:
+        print('Inout directory is empty.')
 else:
-    print('Inout directory is empty.')
+    print('Inout directory does not exist.')
