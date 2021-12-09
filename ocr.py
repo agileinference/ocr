@@ -11,11 +11,11 @@ from PIL import Image
 
 input_path = Path('input')
 
+#check if OCR tools exists
 tools = pyocr.get_available_tools()
 if len(tools) == 0:
     print("No OCR tool found")
     sys.exit()
-# The tools are returned in the recommended order of usage
 tool = tools[0]
 print("Will use tool '%s'" % (tool.get_name()))
 
@@ -24,6 +24,7 @@ lang = langs[0]
 
 builder = pyocr.builders.LineBoxBuilder()
 
+#main conversion function
 def convert(pic):
     output_path = Path('output')
     k = pic.stem + '.html'
@@ -38,7 +39,16 @@ def convert(pic):
     with codecs.open(output_file, 'w', encoding='utf-8') as file_descriptor:
         builder.write_file(file_descriptor, line_boxes)
 
-for x in input_path.iterdir():
-    convert(x)
-
-print('Conversion Done!')
+#count number of items in input directory
+n=0
+i=0
+for files in input_path.iterdir():
+    n=n+1
+if n>0:
+    for x in input_path.iterdir():
+        convert(x)
+        i = i+1
+        print('Converting',x.stem, '(',i, 'out of',n,')')
+    print('Conversion Done!')
+else:
+    print('Inout directory is empty.')
