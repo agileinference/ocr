@@ -1,6 +1,3 @@
-import numpy as np
-import pandas as pd
-import os
 import sys
 import pyocr
 import codecs
@@ -42,6 +39,7 @@ def convert(pic):
 #count number of items in input directory
 n=0
 i=0
+
 for files in input_path.iterdir():
     n=n+1
 if n>0:
