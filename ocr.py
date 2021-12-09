@@ -1,12 +1,13 @@
 import numpy as np
 import pandas as pd
-from PIL import Image
 import os
 import sys
 import pyocr
 import codecs
 import pyocr.builders
+
 from pathlib import Path
+from PIL import Image
 
 input_path = Path('input')
 
