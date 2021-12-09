@@ -36,12 +36,13 @@ def convert(pic):
     with codecs.open(output_file, 'w', encoding='utf-8') as file_descriptor:
         builder.write_file(file_descriptor, line_boxes)
 
-#count number of items in input directory
 n=0
 i=0
 
+#count number of items in input directory
 for files in input_path.iterdir():
     n=n+1
+    
 if n>0:
     for x in input_path.iterdir():
         convert(x)
